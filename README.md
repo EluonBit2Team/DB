@@ -1,4 +1,5 @@
 # DB
+## db 및 테이블 생성 sql파일 설정 방법
 db 세팅
 `init_db.sql` 파일을 저장할 위치는 MariaDB 서버 설정에 따라 다를 수 있지만, 일반적으로 다음과 같은 경로에 저장하는 것이 좋습니다:
 
@@ -52,3 +53,13 @@ init-file=/var/lib/mysql/init_db.sql
 ### 참고 사항
 - **init-file 실행 제한**: `init-file` 옵션은 MariaDB 서버가 시작될 때 단 한 번만 실행됩니다. 이 스크립트를 반복적으로 실행하려면 별도의 스크립트나 애플리케이션 로직을 작성해야 합니다.
 - **에러 처리**: `init-file`이 실행되는 동안 오류가 발생하면 MariaDB 서버가 시작되지 않을 수 있으므로, 스크립트를 테스트 환경에서 충분히 검증한 후 사용하세요.
+
+## 인코딩 방법
+```
+[mysqld]
+...
+init_connect="SET collation_connection=utf8_general_ci"
+init_connect="SET NAMES utf8"
+character-set-server=utf8
+collation-server=utf8_general_ci
+```
