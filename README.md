@@ -56,10 +56,15 @@ init-file=/var/lib/mysql/init_db.sql
 
 ## 인코딩 방법
 ```
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
 [mysqld]
-...
 init_connect="SET collation_connection=utf8_general_ci"
 init_connect="SET NAMES utf8"
 character-set-server=utf8
 collation-server=utf8_general_ci
-```
+
