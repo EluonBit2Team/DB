@@ -36,7 +36,7 @@ RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
     yum clean all
 
 # Create a user and set password
-RUN useradd -m -d /home/sshuser -s /bin/bash sshuser && \
+RUN useradd -m -d /home/eluon -s /bin/bash eluon && \
     echo "eluon:1q2w3e4r" | chpasswd && \
     echo 'eluon ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
