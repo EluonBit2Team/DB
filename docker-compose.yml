@@ -33,6 +33,7 @@ services:
       - app-network
     ports:
       - "2222:22"
+      - "3334:3334"
 
 volumes:
   centos-server-data:
