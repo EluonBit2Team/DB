@@ -25,6 +25,10 @@ RUN ssh-keygen -A && \
     sed -i 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config && \
     echo "AllowUsers eluon" >> /etc/ssh/sshd_config
 
+RUN cd ~ && \
+    mkdir git && \
+    git clone https://github.com/EluonBit2Team/Server.git
+
 # Expose SSH port
 EXPOSE 22
 

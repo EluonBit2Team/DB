@@ -60,12 +60,13 @@ CREATE TABLE IF NOT EXISTS `group_member` (
   PRIMARY KEY (`uid`,`gid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='그룹멤버';
 
-CREATE TABLE IF NOT EXISTS `group_member` (
-  `uid` int(11) NOT NULL,
-  `gid` int(11) NOT NULL,
-  `is_host` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`uid`,`gid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='그룹멤버';
+CREATE TABLE IF NOT EXISTS `group_req` (
+  `gr_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '요청 그룹 id',
+  `groupname` varchar(20) DEFAULT NULL COMMENT '그룹명',
+  `uid` int(11) NOT NULL COMMENT '요청유저의 id',
+  `memo` text DEFAULT NULL COMMENT '요청 메모',
+  PRIMARY KEY (`gr_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='그룹 요청';
 
 -- ############# 서버 통계 DB 세팅 ############# --
 USE server_statistic_db;
