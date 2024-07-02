@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.5
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1q2w3e4r
+      MYSQL_USER: today_chicken 
+      MYSQL_PASSWORD: 1q2w3e4r
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb/mariadb.cnf:/etc/mysql/conf.d/mariadb.cnf
+      - ./mariadb/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - ./mariadb/init-data.sql:/docker-entrypoint-initdb.d/init-data.sql
+    networks:
+      - app-network
+
+  centos-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: centos-server
+    restart: always
+    tty: true
+    stdin_open: true
+    volumes:
+      - centos-server-data:/srv/data
+    depends_on:
+      - mariadb
+    networks:
+      - app-network
+    ports:
+      - "2222:22"
+
+volumes:
+  centos-server-data:
+
+networks:
+  app-network:
+    driver: bridge
