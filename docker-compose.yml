@@ -13,8 +13,8 @@ services:
       - "3306:3306"
     volumes:
       - ./mariadb/mariadb.cnf:/etc/mysql/conf.d/mariadb.cnf
-      - ./mariadb/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
-      - ./mariadb/init-data.sql:/docker-entrypoint-initdb.d/init-data.sql
+      - ./mariadb/001init-db.sql:/docker-entrypoint-initdb.d/001init-db.sql
+      - ./mariadb/002init-data.sql:/docker-entrypoint-initdb.d/002init-data.sql
     networks:
       - app-network
 
