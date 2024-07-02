@@ -7,8 +7,6 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 1q2w3e4r
-      MYSQL_USER: today_chicken 
-      MYSQL_PASSWORD: 1q2w3e4r
     ports:
       - "3306:3306"
     volumes:
