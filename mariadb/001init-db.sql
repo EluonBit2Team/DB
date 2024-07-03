@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `statistic` (
   `mem_max` double DEFAULT NULL COMMENT '메모리 최대',
   `login_user_cnt_avg` double DEFAULT NULL COMMENT '접속자수 평균',
   `login_user_cnt_max` int(11) DEFAULT NULL COMMENT '접속자수 최대',
-  `log_timestamp` datetime DEFAULT NULL COMMENT '기록시간',
+  `log_timestamp` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '기록시간',
   PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1405 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='통계';
 
