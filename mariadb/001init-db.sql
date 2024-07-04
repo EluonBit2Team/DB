@@ -86,13 +86,12 @@ CREATE TABLE IF NOT EXISTS `statistic` (
 USE log_db;
 CREATE TABLE IF NOT EXISTS `client_log` (
   `client_log_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '클라이언트 PK',
-  `uid` int(11) DEFAULT NULL COMMENT '유저 ID',
+  `uid` int(11) DEFAULT NULL COMMENT '유저 UID',
+  `login_id` int(20) DEFAULT NULL COMMENT '유저 로그인 ID',
   `login_time` datetime DEFAULT NULL COMMENT '클라이언트 상태',
   `logout_time` datetime DEFAULT NULL COMMENT '시간',
   PRIMARY KEY (`client_log_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1403 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='클라로그';
-
--- log_db.dm_log definition
 
 CREATE TABLE IF NOT EXISTS `dm_log` (
   `dm_id` int(11) NOT NULL AUTO_INCREMENT,
