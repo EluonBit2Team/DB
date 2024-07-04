@@ -14,7 +14,7 @@ services:
       - ./mariadb/001init-db.sql:/docker-entrypoint-initdb.d/001init-db.sql
       - ./mariadb/002init-data.sql:/docker-entrypoint-initdb.d/002init-data.sql
       - ./mariadb/003init-user.sql:/docker-entrypoint-initdb.d/003init-user.sql
-      - ./mariadb/004init-procidures.sql:/docker-entrypoint-initdb.d/004init-procidures.sql
+      - ./mariadb/004init-procedures.sql:/docker-entrypoint-initdb.d/004init-procedures.sql
       - ./mariadb/data:/var/lib/mysql
     networks:
       - app-network
