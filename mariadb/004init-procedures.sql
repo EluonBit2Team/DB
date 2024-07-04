@@ -1,7 +1,8 @@
 USE log_db;
-
 DROP PROCEDURE IF EXISTS dm_message;
-CREATE DEFINER=`today_chicken`@`%` PROCEDURE `log_db`.`dm_message`(
+
+DELIMITER //
+CREATE PROCEDURE dm_message(
     IN p_sender_uid INT,
     IN p_sender_login_id VARCHAR(20),
     IN p_recver_uid INT,
@@ -9,10 +10,9 @@ CREATE DEFINER=`today_chicken`@`%` PROCEDURE `log_db`.`dm_message`(
     IN p_text TEXT,
     IN p_tps INT,
     OUT result_now DATETIME
-)
+	)
 BEGIN
-    DECLARE msg_count INT;
-
+	DECLARE msg_count INT;
     -- 과거 1분 동안 쌓여있는 메시지의 개수 확인
     SELECT COUNT(*) INTO msg_count
     FROM dm_log
@@ -29,9 +29,12 @@ BEGIN
         SET result_now = NOW(); -- 성공
     END IF;
 END
+//
+DELIMITER ;
 
 DROP PROCEDURE IF EXISTS insert_message;
-CREATE DEFINER=`today_chicken`@`%` PROCEDURE `log_db`.`insert_message`(
+DELIMITER //
+CREATE PROCEDURE insert_message(
     IN p_uid INT,
     IN p_gid INT,
     IN p_text TEXT,
@@ -59,3 +62,5 @@ BEGIN
         SET result_now = NOW(); -- 성공
     END IF;
 END
+//
+DELIMITER ;
