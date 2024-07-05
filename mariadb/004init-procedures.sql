@@ -1,6 +1,6 @@
 USE log_db;
 DROP PROCEDURE IF EXISTS dm_message;
-
+DROP PROCEDURE IF EXISTS insert_message;
 DELIMITER //
 CREATE PROCEDURE dm_message(
     IN p_sender_uid INT,
@@ -28,11 +28,8 @@ BEGIN
         VALUES (p_sender_uid, p_sender_login_id, p_recver_uid, p_recver_login_id, p_text, NOW());
         SET result_now = NOW(); -- 성공
     END IF;
-END
-//
+END//
 DELIMITER ;
-
-DROP PROCEDURE IF EXISTS insert_message;
 DELIMITER //
 CREATE PROCEDURE insert_message(
     IN p_uid INT,
@@ -61,6 +58,5 @@ BEGIN
         VALUES (p_uid, p_gid, p_text, NOW(), p_login_id, p_groupname);
         SET result_now = NOW(); -- 성공
     END IF;
-END
-//
+END//
 DELIMITER ;
