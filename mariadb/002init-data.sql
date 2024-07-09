@@ -6,13 +6,13 @@ INSERT INTO user (login_id, password, name, phone, email, did, position, role, c
     VALUES ('admin2', UNHEX(SHA2('admin2', 256)), 'eluon', '010', 'gmail', 1, 1, 1, NOW(), 120);
 
 INSERT INTO user_setting_db.dept (did, dept_name)
-    VALUES (1, '인사');
+    VALUES (1, '연구 1실');
 INSERT INTO user_setting_db.dept (did, dept_name)
-    VALUES (2, '네트워크');
+    VALUES (2, '연구 2실');
 INSERT INTO user_setting_db.dept (did, dept_name)
-    VALUES (3, '경영지원');
+    VALUES (3, '연구 3실');
 INSERT INTO user_setting_db.dept (did, dept_name)
-    VALUES (4, '연구개발');
+    VALUES (4, '솔루션팀');
 
 INSERT INTO user_setting_db.job_position (pid, position_name)
     VALUES(1, '회장');
