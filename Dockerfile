@@ -25,18 +25,17 @@ RUN ssh-keygen -A && \
     sed -i 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config && \
     echo "AllowUsers eluon" >> /etc/ssh/sshd_config
 
+# Create directories for the application
 USER eluon
-RUN cd /home/eluon && \
-    mkdir git && \
-    cd git && \
-    git clone https://github.com/EluonBit2Team/Server.git
+RUN mkdir -p /home/eluon/git
 
-# Switch back to root user to start SSH service
+# Switch back to root user to start SSH service and entrypoint script
 USER root
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Expose SSH port
 EXPOSE 22
 
 # Start SSH service
-CMD ["/usr/sbin/sshd", "-D"]
-
+CMD ["/entrypoint.sh"]
